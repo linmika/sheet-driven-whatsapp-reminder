@@ -1,23 +1,19 @@
 # Sheet-driven WhatsApp Reminder
 
 A small automation that turns a Google Sheet into a scheduled WhatsApp notifier:
-ops fills in pickup rows, and buyers automatically get a "your return parcel will be
-collected tomorrow" reminder at the right time — with the send result written back
-into the sheet.
+ops fills rows, and buyers automatically get a message reminder at the right time 
+— with the send result written back into the sheet.
 
 Built as a working internal prototype (Apps Script + a relay PC sending from a
 personal WhatsApp via `whatsapp-web.js`), designed so the send channel can be
 swapped for the official WhatsApp Business API later without touching the sheet,
 the scheduler, or the state machine.
 
-Everything here is generalised: no company names, IDs, credentials or internal URLs.
 
 ## The problem
 
-Couriers collect return parcels from buyers' homes. If the buyer hasn't printed the
-return label or packed the parcel, the pickup fails and the driver's trip is wasted.
-Reminding buyers one by one over WhatsApp works — but doesn't scale past a handful
-of rows a day, and nobody records reliably who was actually reminded.
+Product iteration cannot catch up with actual operational use case. Operations are manaully
+sending out whatsapp messages 1 by 1.
 
 Goals:
 
