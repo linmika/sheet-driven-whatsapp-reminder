@@ -1,0 +1,10 @@
+# Real credentials and state — never commit
+gateway/config.json
+gateway/oauth-client.json
+gateway/google-token.json
+gateway/picker-key.txt
+gateway/sent-keys.json
+gateway/session/
+gateway/qr.png
+gateway/.e2e-tmp/
+node_modules/

@@ -1,0 +1,7 @@
+{
+  "name": "sheet-driven-whatsapp-reminder",
+  "private": true,
+  "scripts": {
+    "test": "node test/sim_relay.js && node test/run-e2e.js"
+  }
+}

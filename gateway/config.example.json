@@ -1,0 +1,12 @@
+{
+  "port": 3977,
+  "pollSeconds": 60,
+  "sendGapMs": 3000,
+  "token": "GENERATE_A_64_CHAR_HEX_SECRET_AND_PUT_THE_SAME_VALUE_IN_RELAY_TOKEN",
+  "appsUrl": "https://script.google.com/a/macros/YOUR_DOMAIN/s/YOUR_DEPLOYMENT_ID/exec",
+  "allowlist": ["6590000001", "6580000002"],
+  "sender": "6580000002",
+  "googleAccount": "you@your-workspace-domain.com",
+  "scriptFileId": "YOUR_APPS_SCRIPT_PROJECT_DRIVE_FILE_ID",
+  "browserPath": null
+}
