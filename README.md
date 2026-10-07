@@ -146,9 +146,9 @@ across relay restarts.
 - **The relay must stay up.** Rows that come due while the relay PC sleeps are sent
   late (up to the 72 h cutoff). A missed evening of sends in testing traced back to
   exactly this — the process wasn't running.
-- **Known gap:** a row is still sent if its *send time* is within 72 h but the
-  *pickup time* has already passed. The fix (also skip when `now > pickup time`)
-  is straightforward in `evaluateRow_`.
+- **Late sends need two cutoffs.** "Send if less than 72 h late" alone still
+  fires after the pickup has already happened; `evaluateRow_` therefore also
+  skips once `now > pickup time`. Found by sending a real (expired) reminder.
 - **Apps Script deployments are versioned.** Pushing new code does nothing to the
   live web app until you create a new deployment version — and an open editor tab
   can silently overwrite an API push with stale code.

@@ -183,6 +183,10 @@ function evaluateRow_(row, rowIndex, colMap, now) {
   if (hoursLate > MAX_LATE_HOURS) {
     return { kind: 'final', status: 'Skipped: send time was ' + Math.round(hoursLate) + 'h ago, too stale to send' };
   }
+  var pickupDate = toDate_(row[colMap.pickupTime]);
+  if (pickupDate && pickupDate.getTime() < now.getTime()) {
+    return { kind: 'final', status: 'Skipped: pickup time already passed' };
+  }
   var phoneE164 = normalizePhone_(row[colMap.phone]);
   if (!phoneE164) {
     return { kind: 'final', status: 'Error: invalid phone "' + row[colMap.phone] + '"' };

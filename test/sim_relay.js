@@ -22,6 +22,7 @@ const SHEET = [[],[],[],[], HEADER,
   ['','','+65 90000001','Future','Acme Store',  at('2026-09-24T19:00:00+08:00'), at('2026-09-23T19:00:00+08:00'), ''],   // r10 not due
   ['','','+65 90000001','Stale','Acme Store',   at('2026-09-19T10:00:00+08:00'), at('2026-09-18T10:00:00+08:00'), ''],   // r11 >72h
   ['','','abc','Bad Phone','Acme Store',        at('2026-09-24T17:40:00+08:00'), at('2026-09-23T17:40:00+08:00'), ''],   // r12 invalid
+  ['','','+65 90000001','Missed','Acme Store',  at('2026-09-23T09:00:00+08:00'), at('2026-09-23T17:45:00+08:00'), ''],   // r13 pickup already passed
 ];
 const clone = () => SHEET.map((row) => row.slice());
 
@@ -87,6 +88,7 @@ check('row 9 blocked by whitelist', status(9) === 'Error: Number not in TEST_WHI
 check('row 10 (future) untouched', status(10) === '');
 check('row 11 (100h+ late) skipped', String(status(11)).startsWith('Skipped: send time was'));
 check('row 12 (bad phone) errored', status(12) === 'Error: invalid phone "abc"');
+check('row 13 (pickup time passed) skipped, not sent', status(13) === 'Skipped: pickup time already passed');
 check('row 6 (already done) untouched', status(6) === 'DRY-RUN sent 2026-09-22 09:57');
 const [jobA, jobB] = res.jobs;
 
